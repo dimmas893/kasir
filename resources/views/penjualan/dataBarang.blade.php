@@ -27,7 +27,7 @@
                                 <tbody>
                                     @foreach($barang as $item)
                                     <tr>
-                                        <form action="/{{auth()->user()->level}}/penjualan/store" method="POST">
+                                        <form action="{{ url(auth()->user()->level . '/penjualan/store') }}" method="POST">
                                             @csrf
                                             <td>{{$loop->iteration}}<input class="form-control" type="text"
                                                     value="{{$nomor}}" name="kode_transaksi" hidden></td>

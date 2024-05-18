@@ -123,6 +123,8 @@
         event.preventDefault()
         const id = button.getAttribute('data-id');
         const kode = button.getAttribute('id');
+        var userLevel = '{{ auth()->user()->level }}';
+        var baseUrl = '{{ url('/') }}';
         swal({
                 title: 'Apa Anda Yakin ?',
                 text: 'Anda akan menghapus data: "' + kode +
@@ -135,7 +137,7 @@
                 if (willDelete) {
                     const form = document.getElementById('delete-form');
                     // Setelah pengguna mengkonfirmasi penghapusan, Anda bisa mengirim form ke server
-                    form.action = '/{{auth()->user()->level}}/barang/' + id; // Ubah aksi form sesuai dengan ID yang sesuai
+                    form.action = baseUrl + '/' + userLevel + '/barang/' + id;  // Ubah aksi form sesuai dengan ID yang sesuai
                     form.submit();
                 }
             });

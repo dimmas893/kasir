@@ -33,14 +33,15 @@
                                     <td>{{$loop->iteration}}</td>
                                     <td>{{$item->nama}}</td>
                                     <td>
-                                        <form action="/{{auth()->user()->level}}/kategori/{{$item->id}}" id="delete-form">
-                                            <a href="/{{auth()->user()->level}}/kategori/{{$item->id}}/edit" class="btn btn-sm btn-outline-warning"><i
-                                                    class="fa fa-edit"></i> Edit</a>
+                                        <form action="{{ url(auth()->user()->level . '/kategori/' . $item->id) }}" id="delete-form">
+                                            <a href="{{ url(auth()->user()->level . '/kategori/' . $item->id . '/edit') }}" class="btn btn-sm btn-outline-warning">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </a>
                                             @csrf
                                             @method('delete')
-                                            <button type="button" class="btn btn-sm btn-outline-danger" id="{{$item->nama}}"
-                                                data-id="{{$item->id}}" onclick="confirmDelete(this)"><i
-                                                    class="fa fa-trash"></i> Delete</a>
+                                            <button type="button" class="btn btn-sm btn-outline-danger" id="{{ $item->nama }}" data-id="{{ $item->id }}" onclick="confirmDelete(this)">
+                                                <i class="fa fa-trash"></i> Delete
+                                            </button>
                                         </form>
                                     </td>
                                 </tr>

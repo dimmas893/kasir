@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/{{auth()->user()->level}}/satuan/store" method="POST">
+                <form action="{{ url('/' . auth()->user()->level . '/satuan/store') }}" method="POST">
                     @csrf
                     <div class="form-group">
                         <label for="nama">Nama</label>

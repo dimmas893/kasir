@@ -11,8 +11,7 @@
             <div class="modal-body">
                 <div class="card">
                     <div class="card-body">
-                        <form action="/{{auth()->user()->level}}/penjualan/bayar/{{$nomor}}" method="POST"
-                            id="form-penjualan">
+                        <form action="{{ url(auth()->user()->level . '/penjualan/bayar/' . $nomor) }}" method="POST" id="form-penjualan">
                             @csrf
                             <select class="custom-select" name="kode_kasir" hidden>
                                 <option value="{{ auth()->user()->kode }}">

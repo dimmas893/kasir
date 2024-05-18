@@ -61,7 +61,7 @@
                                     @foreach($transaksi_sementara as $item)
                                     <tr>
                                         <td>{{$item->barang->nama}}</td>
-                                        <form action="/kasir/transaksi-sementara/{{$item->id}}/{{$item->barang_id}}/edit" method="POST">
+                                        <form action="{{ url('/kasir/transaksi-sementara/' . $item->id . '/' . $item->barang_id . '/edit') }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                         <td class="harga" value="{{$item->harga}}">
@@ -80,8 +80,7 @@
                                                     <button type="submit" class="btn btn-sm btn-warning mr-2"><i
                                                             class="fa fa-edit"></i></button>
                                                     </form>
-                                                    <form action="/{{auth()->user()->level}}/penjualan/{{$item->id}}"
-                                                        id="delete-form">
+                                                    <form action="{{ url('/' . auth()->user()->level . '/penjualan/' . $item->id) }}" id="delete-form" method="POST">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit" class="btn btn-sm btn-danger"><i
@@ -98,8 +97,7 @@
                     <div class="card-footer">
                         <button type="button" id="bayar-modal" class="btn m-1 btn-outline-primary float-right"
                             data-toggle="modal" data-target="#form-bayar">Bayar</button>
-                        <a href="/{{auth()->user()->level}}/penjualan/hapus/semua"
-                            class="btn m-1 btn-outline-danger float-right">Batal</a>
+                            <a href="{{ url('/' . auth()->user()->level . '/penjualan/hapus/semua') }}" class="btn m-1 btn-outline-danger float-right">Batal</a>
                     </div>
                 </div>
             </div>
@@ -206,19 +204,19 @@
 
         // Inisialisasi variabel total
         var grandTotal = 0;
-        
+
         // Iterasi melalui setiap elemen dan menjumlahkannya
         total.forEach(function (element) {
             var totalValue = parseFloat(element.getAttribute('value')) || 0;
             grandTotal += totalValue;
         });
-        
+
         if (grandTotal == 0) {
             bayarButton.setAttribute('disabled', true);
         } else {
             bayarButton.removeAttribute('disabled');
         }
-        
+
         // Tampilkan hasilnya di label_total dengan format mata uang Rupiah
         label_total.innerHTML = grandTotal.toLocaleString('id-ID');
         sub_total.value = grandTotal;

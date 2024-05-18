@@ -16,7 +16,7 @@ class UserController extends Controller
         $now = Carbon::now();
         $tahun_bulan = $now->year . $now->month;
         $cek = User::count();
-        
+
         if($cek == 0){
             $urut = 'K-' + 100001;
             $kode = $tahun_bulan . $urut;
@@ -39,7 +39,7 @@ class UserController extends Controller
                 'password' => 'required|string',
                 'level' => 'required|in:admin,kasir',
             ]);
-    
+
             $user = new User;
             $user->kode = $request->kode;
             $user->nama = $request->nama;
@@ -47,8 +47,8 @@ class UserController extends Controller
             $user->password = bcrypt($request->password);
             $user->level = $request->level;
             $user->save();
-    
-    
+
+
             return redirect('/admin/user')->with('sukses', 'Data Berhasil di Simpan');
         }catch(\Exception $e){
             return redirect('/admin/user')->with('gagal', 'Data Tidak Berhasil di Simpan. Pesan Kesalahan: '.$e->getMessage());
@@ -57,7 +57,7 @@ class UserController extends Controller
 
     public function show()
     {
-        
+
     }
 
     /**
@@ -90,7 +90,7 @@ class UserController extends Controller
                 $user->password = bcrypt($request->password);
                 $user->update();
             }
-    
+
             return redirect('/admin/user')->with('sukses', 'Data Berhasil di Edit');
         }catch(\Exception $e){
             return redirect('/admin/user')->with('gagal', 'Data Tidak Berhasil di Edit. Pesan Kesalahan: '.$e->getMessage());
@@ -115,21 +115,21 @@ class UserController extends Controller
         $user_route = Auth::user();
         try {
             $user = User::findOrFail($id);
-    
+
             $user->nama = $request->nama;
             $user->email = $request->email;
-    
+
             // Memeriksa apakah password dimasukkan
             if ($request->filled('password')) {
                 $user->password = bcrypt($request->password);
             }
-    
+
             $user->save();
-    
+
             return redirect('/' . $user_route->level . '/profile')->with('sukses', 'Data Berhasil di Edit');
         } catch (\Exception $e) {
             return redirect('/' . $user_route->level . '/profile')->with('gagal', 'Data Tidak Berhasil di Edit. Pesan Kesalahan: ' . $e->getMessage());
         }
     }
-    
+
 }

@@ -14,9 +14,9 @@
                 <h4 class="text-primary">Edit Data User</h4>
             </div>
             <div class="card-body">
-                <form action="/{{auth()->user()->level}}/user/{{$user->id}}">
-                    @method('PUT')
+                <form action="{{ url(auth()->user()->level . '/user/' . $user->id . '/update') }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -49,7 +49,7 @@
                             </div>
                         </div>
                     </div>
-                    <a href="/{{auth()->user()->level}}/user" class="btn btn-sm btn-outline-warning"><i class="fas fa-caret-left"></i> Kembali</a>
+                    <a href="{{ url('/' . auth()->user()->level . '/user') }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-caret-left"></i> Kembali</a>
                     <button type="submit" class="btn btn-sm btn-outline-primary"><i class="fas fa-edit"></i> Edit</button>
                 </form>
             </div>

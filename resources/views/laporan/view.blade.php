@@ -42,7 +42,7 @@
                 </table>
             </div>
             <div class="card-footer bg-white">
-                <a href="/{{auth()->user()->level}}/laporan" class="btn btn-sm btn-outline-warning"><i class="fas fa-caret-left"></i> Kembali</a>
+                <a href="{{ url(auth()->user()->level . '/laporan') }}" class="btn btn-sm btn-outline-warning"><i class="fas fa-caret-left"></i> Kembali</a>
             </div>
         </div>
     </div>

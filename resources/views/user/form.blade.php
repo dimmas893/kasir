@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="/{{auth()->user()->level}}/user/store" method="POST">
+                <form action="{{ url('/' . auth()->user()->level . '/user/store') }}" method="POST">
                     @csrf
                     <div class="row">
                         <div class="col-md-12">
