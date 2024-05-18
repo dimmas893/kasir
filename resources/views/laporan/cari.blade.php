@@ -41,10 +41,10 @@
                                         <div class="form-group">
                                             <button type="submit" class="btn btn-sm btn-success"><i
                                                     class="fa fa-search"></i> Cari</button>
-                                            <a href="{{ route(auth()->user()->level . '.laporan.print', ['dari' => $dari, 'sampai' => $sampai]) }}"
-                                                class="btn btn-sm btn-danger" target="_blank">
-                                                <i class="fa fa-print"></i> Print
-                                            </a>
+                                                    <a href="{{ url(auth()->user()->level . '/laporan/' . $dari . '/' . $sampai . '/print') }}"
+                                                        class="btn btn-sm btn-danger" target="_blank">
+                                                         <i class="fa fa-print"></i> Print
+                                                     </a>
                                         </div>
                                     </div>
                                 </div>
@@ -75,9 +75,7 @@
                                             <td>{{ $item->formatRupiah('bayar') }}</td>
                                             <td>{{ $item->formatRupiah('kembali') }}</td>
                                             <td>
-                                                <a href="{{ url(auth()->user()->level . '/laporan/' . $dari . '/' . $sampai . '/print') }}"
-                                                    class="btn btn-sm btn-danger" target="_blank"><i
-                                                        class="fa fa-print"></i> Print</a>
+                                                <a href="{{ url(auth()->user()->level . '/laporan/' . $dari . '/' . $sampai . '/print') }}" class="btn btn-sm btn-danger" target="_blank"><i class="fa fa-print"></i> Print</a>
                                             </td>
                                         </tr>
                                     @endforeach
