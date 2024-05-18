@@ -13,12 +13,20 @@
                 <div class="col-12">
                     <div class="card shadow">
                         <div class="card-header bg-white">
-                            <h4 class="position-absolute text-primary">Data Barang</h4>
-                            <div class="card-header-form float-right">
-                                <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
-                                    data-target="#form-tambah"><i class="fa fa-plus"></i> Tambah</button>
+                            <div class="row">
+                                <div class="col-6">
+                                    <h4 class="text-primary">Data Barang</h4>
+                                </div>
+                                <div class="col-6 text-right">
+                                    <div class="card-header-form">
+                                        <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal" data-target="#form-tambah">
+                                            <i class="fa fa-plus"></i> Tambah
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
+
                         <div class="card-body p-2">
                             <div class="table-responsive">
                                 <table class="table table-hover" id="table">
