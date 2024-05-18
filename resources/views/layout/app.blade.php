@@ -62,7 +62,7 @@
   <script src="{{asset('assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
   <script src="{{asset('assets/modules/moment.min.js')}}"></script>
   <script src="{{asset('assets/js/stisla.js')}}"></script>
-  
+
     <!-- JS Libraies -->
     <script src="{{asset('assets/modules/sweetalert/sweetalert.min.js')}}"></script>
     <script src="{{asset('assets/modules/datatables/datatables.min.js')}}"></script>
@@ -76,7 +76,7 @@
     <script src="{{asset('assets/modules/sweetalert/sweetalert.min.js')}}"></script>
 
   <!-- Page Specific JS File -->
-  
+
   <!-- Template JS File -->
   <script src="{{asset('assets/js/scripts.js')}}"></script>
   <script src="{{asset('assets/js/custom.js')}}"></script>
@@ -115,7 +115,7 @@
         });
       });
       setTimeout(function() {
-        window.open('/{{auth()->user()->level}}/laporan/{{ session('berhasil') }}/print', '_blank');
+        window.open("{{ url(auth()->user()->level . '/laporan/' . session('berhasil') . '/print') }}", '_blank');
       }, 2000);
     </script>
   @endif
