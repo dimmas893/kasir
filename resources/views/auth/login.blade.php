@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
     <title>Login Kasir</title>
-    <link rel="icon" href="{{asset('assets/img/unsplash/logo.png')}}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('assets/img/unsplash/logo.png') }}" type="image/x-icon">
 
     <!-- General CSS Files -->
-    <link rel="stylesheet" href="{{asset('assets/modules/bootstrap/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/modules/fontawesome/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap/css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/fontawesome/css/all.min.css') }}">
 
     <!-- CSS Libraries -->
-    <link rel="stylesheet" href="{{asset('assets/modules/bootstrap-social/bootstrap-social.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/modules/izitoast/css/iziToast.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/bootstrap-social/bootstrap-social.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/modules/izitoast/css/iziToast.min.css') }}">
 
     <!-- Template CSS -->
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/components.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/components.css') }}">
 </head>
 
 <body class="bg-white">
@@ -37,12 +37,12 @@
                                 <h4 class="text-info">Toko Kelontong</h4>
                             </div>
                             <div class="card-body">
-                                <form method="POST" action="/postlogin" class="needs-validation">
+                                <form method="POST" action="{{ url('postlogin') }}" class="needs-validation">
                                     @csrf
                                     <div class="form-group">
                                         <label class="text-info" for="email">Email</label>
-                                        <input id="email" type="email" class="form-control" name="email" tabindex="1"
-                                            autofocus placeholder="Masukkan Email">
+                                        <input id="email" type="email" class="form-control" name="email"
+                                            tabindex="1" autofocus placeholder="Masukkan Email">
                                         <div class="invalid-feedback">
                                             Please fill in your email
                                         </div>
@@ -84,46 +84,47 @@
     </div>
 
     <!-- General JS Scripts -->
-    <script src="{{asset('assets/modules/jquery.min.js')}}"></script>
-    <script src="{{asset('assets/modules/popper.js')}}"></script>
-    <script src="{{asset('assets/modules/tooltip.js')}}"></script>
-    <script src="{{asset('assets/modules/bootstrap/js/bootstrap.min.js')}}"></script>
-    <script src="{{asset('assets/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
-    <script src="{{asset('assets/modules/moment.min.js')}}"></script>
-    <script src="{{asset('assets/js/stisla.js')}}"></script>
+    <script src="{{ asset('assets/modules/jquery.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/popper.js') }}"></script>
+    <script src="{{ asset('assets/modules/tooltip.js') }}"></script>
+    <script src="{{ asset('assets/modules/bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/nicescroll/jquery.nicescroll.min.js') }}"></script>
+    <script src="{{ asset('assets/modules/moment.min.js') }}"></script>
+    <script src="{{ asset('assets/js/stisla.js') }}"></script>
 
     <!-- JS Libraies -->
-    <script src="{{asset('assets/modules/izitoast/js/iziToast.min.js')}}"></script>
+    <script src="{{ asset('assets/modules/izitoast/js/iziToast.min.js') }}"></script>
     <!-- Page Specific JS File -->
 
     <!-- Template JS File -->
-    <script src="{{asset('assets/js/scripts.js')}}"></script>
-    <script src="{{asset('assets/js/custom.js')}}"></script>
-    @if(session('status'))
-    <script>
-        iziToast.success({
-            title: 'Password Reset!',
-            message: '{{session('status')}}',
-            position: 'topRight'
-        });
-    </script>
+    <script src="{{ asset('assets/js/scripts.js') }}"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    @if (session('status'))
+        <script>
+            iziToast.success({
+                title: 'Password Reset!',
+                message: '{{ session('status') }}',
+                position: 'topRight'
+            });
+        </script>
     @elseif(session('gagal'))
-    <script>
-        iziToast.error({
-            title: 'Gagal Login!',
-            message: '{{session('gagal')}}',
-            position: 'topRight'
-        });
-    </script>
+        <script>
+            iziToast.error({
+                title: 'Gagal Login!',
+                message: '{{ session('gagal') }}',
+                position: 'topRight'
+            });
+        </script>
     @elseif(session('sukses'))
-    <script>
-        iziToast.success({
-            title: 'Sukses!',
-            message: '{{session('sukses')}}',
-            position: 'topRight'
-        });
-    </script>
+        <script>
+            iziToast.success({
+                title: 'Sukses!',
+                message: '{{ session('sukses') }}',
+                position: 'topRight'
+            });
+        </script>
     @endif
 </body>
 
 </html>
+
