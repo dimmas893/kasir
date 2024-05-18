@@ -4,7 +4,7 @@
             <a href="{{ url('/') . '/' . auth()->user()->level }}/dashboard">Toko Sinyo</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ url('dashboard') }}">Ak</a>
+            <a href="{{ url('dashboard') }}">TS</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
