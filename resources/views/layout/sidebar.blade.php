@@ -38,10 +38,10 @@
                     <a href="{{ url(auth()->user()->level . '/laporan') }}" class="nav-link"><i
                             class="fas fa-file"></i><span>Laporan</span></a>
                 </li>
-                <li class="dropdown">
+                {{-- <li class="dropdown">
                     <a href="{{ url(auth()->user()->level . '/user') }}" class="nav-link"><i
                             class="fas fa-users"></i><span>User</span></a>
-                </li>
+                </li> --}}
             @endif
         </ul>
 
