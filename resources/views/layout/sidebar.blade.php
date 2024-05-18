@@ -1,7 +1,7 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
         <div class="sidebar-brand">
-            <a href="/{{ auth()->user()->level }}/dashboard">Toko Sinyo</a>
+            <a href="{{ url('/') . '/' . auth()->user()->level }}/dashboard">Toko Sinyo</a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{ url('dashboard') }}">Ak</a>

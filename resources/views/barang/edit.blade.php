@@ -60,7 +60,7 @@
                                     <div class="form-group">
                                         <label for="harga_beli">Harga Beli</label>
                                         <input type="text" class="form-control jumlah" id="harga-beli" name="harga_beli"
-                                            value="{{ $barang->harga_beli }}">
+                                            value="{{ $barang->formatRupiah('harga_beli') }}">
                                     </div>
                                 </div>
                             </div>
@@ -68,7 +68,7 @@
                                 <div class="form-group">
                                     <label for="harga_jual">Harga Jual</label>
                                     <input type="text" class="form-control jumlah" id="harga-jual" name="harga_jual"
-                                        value="{{ $barang->harga_jual }}">
+                                        value="{{ $barang->formatRupiah('harga_jual') }}">
                                 </div>
                             </div>
                             <div class="col-md-6">
