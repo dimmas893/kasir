@@ -91,7 +91,7 @@
 
                                     <div class="form-group">
                                         <span>Sudah punya akun? </span>
-                                        <a href="/login" class="text-info">
+                                        <a href="{{url('login')}}" class="text-info">
                                             Login
                                         </a>
                                     </div>

@@ -65,7 +65,7 @@
                                     </div>
                                     <div class="form-group">
                                         <span>Belum punya akun? </span>
-                                        <a href="/daftar" class="text-info">
+                                        <a href="{{url('daftar')}}" class="text-info">
                                             Daftar
                                         </a>
                                     </div>
