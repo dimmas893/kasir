@@ -40,7 +40,7 @@
                             </div>
                             @enderror
                             <div class="card-body">
-                                <form method="POST" action="/user/daftar" class="needs-validation" id="form-daftar">
+                                <form method="POST" action="{{url('user/daftar')}}" class="needs-validation" id="form-daftar">
                                     @csrf
                                     <div class="row">
                                         <div class="col-md-6">
