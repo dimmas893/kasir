@@ -46,41 +46,44 @@
                             </div>
                         @endif
                         <div class="card-body p-2">
-                            <table class="table table-hover" id="table">
-                                <thead>
-                                    <tr>
-                                        <th>No.</th>
-                                        <th>Kode Transaksi</th>
-                                        <th>Tanggal</th>
-                                        <th>Kode Kasir</th>
-                                        <th>Total</th>
-                                        <th>Bayar</th>
-                                        <th>Kembali</th>
-                                        <th>Aksi</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($transaksi as $item)
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="table">
+                                    <thead>
                                         <tr>
-                                            <td>{{ $loop->iteration }}</td>
-                                            <td>{{ $item->kode_transaksi }}</td>
-                                            <td>{{ $item->tanggal }}</td>
-                                            <td>{{ $item->kode_kasir }}</td>
-                                            <td>{{ $item->formatRupiah('total') }}</td>
-                                            <td>{{ $item->formatRupiah('bayar') }}</td>
-                                            <td>{{ $item->formatRupiah('kembali') }}</td>
-                                            <td>
-                                                <a href="{{ url(auth()->user()->level . '/laporan/' . $item->kode_transaksi) }}"
-                                                    class="btn btn-sm btn-outline-info"><i class="fa fa-eye"></i> Detail</a>
-                                                <a href="{{ url(auth()->user()->level . '/laporan/' . $item->kode_transaksi . '/print') }}"
-                                                    target="_blank" class="btn btn-sm btn-outline-danger"><i
-                                                        class="fa fa-print"></i> Print</a>
-                                            </td>
+                                            <th>No.</th>
+                                            <th>Kode Transaksi</th>
+                                            <th>Tanggal</th>
+                                            <th>Kode Kasir</th>
+                                            <th>Total</th>
+                                            <th>Bayar</th>
+                                            <th>Kembali</th>
+                                            <th>Aksi</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($transaksi as $item)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $item->kode_transaksi }}</td>
+                                                <td>{{ $item->tanggal }}</td>
+                                                <td>{{ $item->kode_kasir }}</td>
+                                                <td>{{ $item->formatRupiah('total') }}</td>
+                                                <td>{{ $item->formatRupiah('bayar') }}</td>
+                                                <td>{{ $item->formatRupiah('kembali') }}</td>
+                                                <td>
+                                                    <a href="{{ url(auth()->user()->level . '/laporan/' . $item->kode_transaksi) }}"
+                                                        class="btn btn-sm btn-outline-info"><i class="fa fa-eye"></i> Detail</a>
+                                                    <a href="{{ url(auth()->user()->level . '/laporan/' . $item->kode_transaksi . '/print') }}"
+                                                        target="_blank" class="btn btn-sm btn-outline-danger"><i
+                                                            class="fa fa-print"></i> Print</a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
+
                     </div>
                 </div>
             </div>
