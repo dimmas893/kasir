@@ -91,7 +91,7 @@
                                                     <button type="submit" class="btn btn-sm btn-warning mr-2"><i
                                                             class="fa fa-edit"></i></button>
                                                     </form>
-                                                    <form action="{{ url('/' . auth()->user()->level . '/penjualan/' . $item->id) }}" id="delete-form" method="POST">
+                                                    <form action="{{ url('/' . auth()->user()->level . '/penjualan/' . $item->id) }}" id="delete-form">
                                                         @csrf
                                                         @method('delete')
                                                         <button type="submit" class="btn btn-sm btn-danger"><i
