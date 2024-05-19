@@ -10,11 +10,22 @@
                 <div class="card shadow">
                     <div class="card-header bg-white">
                         <h4 class="position-absolute">Penjualan Kasir</h4>
-                        <div class="card-header-form float-right">
-                            <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
-                                data-target="#data-barang"><i class="fa fa-plus"></i> Tambah</button>
+
+                    </div>
+                    <div class="card-header bg-white">
+                        <div class="row">
+                            <div class="col-9">
+                                <h4 class="position-absolute">Penjualan Kasir</h4>
+                            </div>
+                            <div class="col-3 text-right">
+                                <div class="card-header-form">
+                                    <button type="button" class="btn btn-sm btn-outline-success" data-toggle="modal"
+                                        data-target="#data-barang"><i class="fa fa-plus"></i> Tambah</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
+
                     <div class="card-body p-2">
                         <div class="row">
                             <div class="col-md-2">

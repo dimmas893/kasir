@@ -83,32 +83,36 @@
                         <h4 class="text-info">Detail Transaksi</h4>
                     </div>
                     <div class="card-body p-2">
-                        <table class="table table-hover" id="table">
-                            <thead>
-                                <tr>
-                                    <th>No.</th>
-                                    <th>Kode transaksi</th>
-                                    <th>Nama</th>
-                                    <th>Harga</th>
-                                    <th>Jumlah</th>
-                                    <th>Diskon</th>
-                                    <th>Total</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($detail as $item)
-                                <tr>
-                                    <td>{{$loop->iteration}}</td>
-                                    <td>{{$item->kode_transaksi}}</td>
-                                    <td>{{$item->barang}}</td>
-                                    <td>{{$item->formatRupiah('harga')}}</td>
-                                    <td>{{$item->jumlah}}</td>
-                                    <td>{{$item->diskon}}%</td>
-                                    <td>{{$item->formatRupiah('total')}}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover" id="table">
+                                <thead>
+                                    <tr>
+                                        <th>No.</th>
+                                        <th>Kode transaksi</th>
+                                        <th>Nama</th>
+                                        <th>Harga</th>
+                                        <th>Jumlah</th>
+                                        <th>Diskon</th>
+                                        <th>Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($detail as $item)
+                                    <tr>
+                                        <td>{{$loop->iteration}}</td>
+                                        <td>{{$item->kode_transaksi}}</td>
+                                        <td>{{$item->barang}}</td>
+                                        <td>{{$item->formatRupiah('harga')}}</td>
+                                        <td>{{$item->jumlah}}</td>
+                                        <td>{{$item->diskon}}%</td>
+                                        <td>{{$item->formatRupiah('total')}}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>
