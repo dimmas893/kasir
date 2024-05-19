@@ -1,10 +1,20 @@
 <div class="main-sidebar sidebar-style-2">
     <aside id="sidebar-wrapper">
-        <div class="sidebar-brand">
-            <a href="{{ url('/') . '/' . auth()->user()->level }}/dashboard">Toko Sinyo</a>
+        <div class="sidebar-brand mt-3">
+            <a href="{{ url('/') . '/' . auth()->user()->level }}/dashboard">
+                <img src="{{ asset('sinyo.jpeg') }}" width="50px" alt="Logo" class="logo">
+            </a>
         </div>
         <div class="sidebar-brand sidebar-brand-sm">
-            <a href="{{ url('dashboard') }}">TS</a>
+            <a href="{{ url('dashboard') }}">
+                <img src="{{ asset('sinyo.jpeg') }}" alt="Logo" width="50px" class="logo-sm">
+            </a>
+        </div>
+        <div class="sidebar-brand">
+            <a href="{{ url('/') . '/' . auth()->user()->level }}/dashboard">Kedai Terungku</a>
+        </div>
+        <div class="sidebar-brand sidebar-brand-sm">
+            <a href="{{ url('dashboard') }}">KD</a>
         </div>
         <ul class="sidebar-menu">
             <li class="menu-header">Dashboard</li>
