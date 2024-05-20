@@ -18,9 +18,11 @@ class TransaksiController extends Controller
      */
     public function index()
     {
-        $transaksi = Transaksi::orderBy('tanggal', 'desc')->get();
+        $transaksi = Transaksi::whereDate('created_at', Carbon::now())
+                          ->orderBy('tanggal', 'desc')
+                          ->get();
 
-        return view('laporan.index', compact('transaksi'));
+    return view('laporan.index', compact('transaksi'));
     }
 
     /**
@@ -45,7 +47,7 @@ class TransaksiController extends Controller
     public function show($kodeTransaksi)
     {
         $data = TransaksiDetail::where('kode_transaksi', $kodeTransaksi)->get();
-        
+
         return view('laporan.view', compact('data'));
     }
 
@@ -70,11 +72,10 @@ class TransaksiController extends Controller
      */
     public function destroy(Transaksi $transaksi)
     {
-        
     }
 
     public function print($kode_transaksi)
-     {
+    {
         $id_transaksi = Transaksi::where('kode_transaksi', $kode_transaksi)->first();
         $transaksi = Transaksi::find($id_transaksi->id);
         $transaksi_detail = TransaksiDetail::where('kode_transaksi', $kode_transaksi)->get();
@@ -82,26 +83,25 @@ class TransaksiController extends Controller
         $pdf = Pdf::loadView('laporan.print', compact('transaksi', 'transaksi_detail'));
         return $pdf->stream();
     }
-    
+
     public function cari(Request $request)
     {
         $dari = $request->dari;
         $sampai = $request->sampai;
         $tanggalSampai = Carbon::parse($sampai)->addDays(1)->format('Y-m-d');
-        
+
         $transaksi = Transaksi::whereBetween('tanggal', [$dari, $tanggalSampai])->get();
-        
-        return view('laporan.cari',compact('transaksi', 'dari', 'sampai'));
+
+        return view('laporan.cari', compact('transaksi', 'dari', 'sampai'));
     }
-    
+
     public function printTanggal($dari, $sampai)
     {
         $tanggalSampai = Carbon::parse($sampai)->addDays(1)->format('Y-m-d');
         $transaksi = Transaksi::whereBetween('tanggal', [$dari, $tanggalSampai])->get();
-        
+
         $totalAll = 0;
-        foreach($transaksi as $data)
-        {
+        foreach ($transaksi as $data) {
             $totalAll += $data->total;
         }
 
