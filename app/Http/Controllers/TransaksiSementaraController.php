@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Auth;
 
 class TransaksiSementaraController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $barang = Barang::all();
@@ -23,7 +20,7 @@ class TransaksiSementaraController extends Controller
         $now = Carbon::now();
         $tahun_bulan = $now->year . $now->month;
         $cek = Transaksi::count();
-        
+
         if($cek == 0){
             $urut = 10000001;
             $nomor = $tahun_bulan . $urut;
@@ -52,24 +49,24 @@ class TransaksiSementaraController extends Controller
         $user = Auth::user();
 
         $data = $request->all();
-
-        $sub_total = ($data['harga'] - ($data['diskon'] * $data['harga'] / 100)) * $data['jumlah'];
+        $jumlah = (int) $request->jumlah; // ← Ubah paksa jadi integer
+        $sub_total = ($data['harga'] - ($data['diskon'] * $data['harga'] / 100)) * $jumlah;
 
         $barangAda = TransaksiSementara::where('barang_id', $request->barang_id)->first();
-        
-        if($barangAda) {
+
+        if ($barangAda) {
             return redirect('/' . $user->level . '/penjualan')->with('warning', 'Barang Yang Sama Sudah Tersedia');
-        }else{
+        } else {
             $transaksi_sementara = new TransaksiSementara;
             $transaksi_sementara->kode_transaksi = $request->kode_transaksi;
             $transaksi_sementara->barang_id = $request->barang_id;
             $transaksi_sementara->harga = $request->harga;
-            $transaksi_sementara->jumlah = $request->jumlah;
+            $transaksi_sementara->jumlah = $jumlah; // ← pastikan yang ini
             $transaksi_sementara->diskon = $request->diskon;
             $transaksi_sementara->total = $sub_total;
             $transaksi_sementara->save();
         }
-        
+
         return redirect('/' . $user->level . '/penjualan');
     }
 
@@ -86,7 +83,7 @@ class TransaksiSementaraController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        
+
     }
 
     /**
@@ -101,12 +98,12 @@ class TransaksiSementaraController extends Controller
 
         if($barang->stok >= $data['jumlah']){
             $sub_total = ($data['harga'] - ($data['diskon'] * $data['harga'] / 100)) * $data['jumlah'];
-    
+
             $transaksi_sementara = TransaksiSementara::find($id);
             $transaksi_sementara->jumlah = $request->jumlah;
             $transaksi_sementara->total = $sub_total;
             $transaksi_sementara->update();
-    
+
             return redirect('/' . $user->level . '/penjualan');
         }else{
             return redirect('/' . $user->level . '/penjualan')->with('gagal', $barang->nama . ' hanya tersisa ' . $barang->stok);
@@ -131,12 +128,12 @@ class TransaksiSementaraController extends Controller
     public function hapusSemua()
     {
         $user = Auth::user();
-        
+
         TransaksiSementara::truncate(); // Menghapus semua data dari tabel Transaksi
-        
+
         return redirect('/' . $user->level . '/penjualan');
     }
-    
+
     public function bayar(Request $request, $kode_transaksi)
     {
         $user = Auth::user();
@@ -171,9 +168,9 @@ class TransaksiSementaraController extends Controller
 
                 foreach ($transaksi_sementara as $data) {
                     $barang = Barang::find($data->barang_id);
-        
+
                         $kurangi = $barang->stok - $data->jumlah;
-        
+
                         $barang->update(['stok' => $kurangi]);
 
                         TransaksiDetail::create([
